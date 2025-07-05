@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +66,29 @@
     }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
-    .exp-toggle { cursor: pointer; color: var(--accent); margin-top: 10px; display: inline-block; }
+
+    .exp-card {
+      background-color: #fff;
+      border-left: 5px solid var(--accent);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      animation: fadeUp 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    body.dark .exp-card {
+      background-color: var(--dark-card);
+      color: var(--dark-text);
+    }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     footer {
       text-align: center; padding: 20px; background: #f0ebe3;
     }
@@ -117,15 +138,27 @@
 
 <section id="experience" class="card">
   <h2>Experience</h2>
-  <p><strong>MC – Hypertension Education (2025)</strong><br>
-    Hosted a health talk at Puskesmas Tugu with empathy and energy.</p>
-  <img src="https://i.imgur.com/Vw2xZuL.jpeg" alt="MC Firda" style="width:100%; border-radius:12px; margin-top:15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-  <p style="text-align:center; font-size:0.9rem; color:#777;">Hypertension Health Education – MC Role, Puskesmas Tugu 2025</p>
 
-  <span class="exp-toggle" onclick="toggleMore()">+ Show more</span>
-  <div id="moreExp" style="display:none;">
-    <p><strong>Moderator – Pemira FIK UI 2024</strong><br>Facilitated panel discussions with clarity and focus.</p>
-    <p><strong>Publication Staff – Olim UI 2024</strong><br>Designed visual content for promotional campaigns.</p>
+  <div class="exp-card">
+    <h3>Master of Ceremony – Turlap IPE (Puskesmas Tugu, 2025)</h3>
+    <p>Led the interprofessional education field trip on hypertension awareness with empathy and confidence. Delivered clear communication to the audience and health professionals during the event.</p>
+    <img src="https://i.imgur.com/Vw2xZuL.jpeg" alt="MC Firda" style="width:100%; border-radius:12px; margin-top:15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <p style="text-align:center; font-size:0.9rem; color:#777;">Hypertension Health Education – MC Role, Puskesmas Tugu 2025</p>
+  </div>
+
+  <div class="exp-card">
+    <h3>Moderator – Pemira FIK UI (2024)</h3>
+    <p>Facilitated a structured and respectful panel session during the student election forum, coordinating communication between candidates and audience.</p>
+  </div>
+
+  <div class="exp-card">
+    <h3>Publication Staff – Olim UI (2024)</h3>
+    <p>Created visually compelling digital posters and promotional content for the campus-wide health olympiad, maintaining brand consistency and clarity.</p>
+  </div>
+
+  <div class="exp-card">
+    <h3>Liaison Officer – NURSE 2024 (Vocal Division)</h3>
+    <p>Coordinated with performers and managed backstage flow in the vocal division, ensuring smooth communication and performance management during the event.</p>
   </div>
 </section>
 
@@ -134,7 +167,7 @@
   <p><strong>Universitas Indonesia</strong> (2024–Present)<br>Studying nursing and involved in interprofessional projects.</p>
   <p><strong>SMAN 6 Jakarta</strong> (2021–2024)<br>Science stream with active participation in school events.</p>
 </section>
-  
+
 <section id="contact" class="card">
   <h2>Contact</h2>
   <div class="sosmed" style="font-size: 2rem; display: flex; justify-content: center; gap: 30px; margin-top: 15px;">
@@ -153,7 +186,7 @@
     darkBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
   };
 
-  const cards = document.querySelectorAll('.card');
+  const cards = document.querySelectorAll('.card, .exp-card');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('show');
@@ -180,18 +213,6 @@
       document.getElementById(btn.dataset.tab).classList.add('active');
     });
   });
-
-  function toggleMore() {
-    const more = document.getElementById("moreExp");
-    const toggle = document.querySelector(".exp-toggle");
-    if (more.style.display === "none") {
-      more.style.display = "block";
-      toggle.textContent = "- Show less";
-    } else {
-      more.style.display = "none";
-      toggle.textContent = "+ Show more";
-    }
-  }
 </script>
 
 </body>
