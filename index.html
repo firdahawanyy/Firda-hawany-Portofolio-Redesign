@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Firda Hawany - Interactive Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #fff;
+      --text: #333;
+      --accent: #b08968;
+      --card: #f9e3e3;
+      --dark-bg: #1e1e1e;
+      --dark-text: #f5f5f5;
+      --dark-card: #2d2d2d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background: var(--bg); color: var(--text); transition: 0.4s; }
+    body.dark { background: var(--dark-bg); color: var(--dark-text); }
+    header {
+      text-align: center; padding: 60px 20px; background: #f0ebe3; position: relative;
+    }
+    header img {
+      width: 180px; height: 180px; border-radius: 50%; border: 5px solid #fff;
+      object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.5s;
+    }
+    header img:hover { transform: scale(1.05); }
+    h1 { font-size: 2.5rem; margin-top: 20px; }
+    .typing { font-size: 1rem; margin: 10px 0; color: #777; min-height: 24px; }
+    .sosmed a {
+      margin: 0 12px; font-size: 1.5rem; color: inherit; transition: color 0.3s;
+    }
+    .sosmed a:hover { color: var(--accent); }
+    #darkToggle {
+      position: absolute; top: 20px; right: 20px; font-size: 1.5rem; background: none;
+      border: none; cursor: pointer;
+    }
+    nav {
+      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+      padding: 12px 0; background: #e6ccb2; position: sticky; top: 0; z-index: 10;
+    }
+    nav a {
+      padding: 8px 16px; border-radius: 20px; text-decoration: none; background: #fff;
+      color: #3b2f2f; font-weight: bold;
+    }
+    nav a:hover { background: var(--accent); color: #fff; }
+    section {
+      max-width: 900px; margin: auto; padding: 40px 20px;
+    }
+    h2 { font-size: 1.8rem; margin-bottom: 10px; color: var(--accent); }
+    .card {
+      background: var(--card); padding: 20px; border-radius: 12px;
+      margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: 0.5s ease; opacity: 0; transform: translateY(50px);
+    }
+    .card.show { opacity: 1; transform: translateY(0); }
+    .tab-buttons { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .tab-buttons button {
+      padding: 6px 14px; border-radius: 18px; border: 1px solid var(--accent); background: transparent;
+      cursor: pointer; transition: 0.3s;
+    }
+    .tab-buttons button.active {
+      background: var(--accent); color: #fff;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .exp-toggle { cursor: pointer; color: var(--accent); margin-top: 10px; display: inline-block; }
+    footer {
+      text-align: center; padding: 20px; background: #f0ebe3;
+    }
+    body.dark nav { background: #333; }
+    body.dark .card { background: var(--dark-card); color: var(--dark-text); }
+    body.dark nav a { background: #444; color: #eee; }
+    body.dark nav a:hover { background: #666; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://i.imgur.com/UCi81QT.jpeg" alt="Foto Firda"/>
+  <h1>Firda Hawany</h1>
+  <div class="typing" id="typingText"></div>
+  <div class="sosmed">
+    <a href="https://www.instagram.com/firdahawny"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:firdahawany12@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/firda-hawany-4b1463338"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <button id="darkToggle">🌙</button>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+</nav>
+
+<section id="about" class="card"><h2>About Me</h2>
+<p>Hi! I'm Firda, a nursing student at Universitas Indonesia passionate about public health, organizing, and communication. I love hosting events and collaborating in meaningful projects.</p>
+</section>
+
+<section id="skills" class="card">
+  <h2>Skills</h2>
+  <div class="tab-buttons">
+    <button class="active" data-tab="speak">Public Speaking</button>
+    <button data-tab="design">Creative Design</button>
+    <button data-tab="organize">Teamwork</button>
+  </div>
+  <div id="speak" class="tab-content active"><p>Experienced MC and moderator for campus and health events.</p></div>
+  <div id="design" class="tab-content"><p>Created posters and digital assets for various organizations.</p></div>
+  <div id="organize" class="tab-content"><p>Worked in teams for Olim UI, Nurse 2024, and other programs.</p></div>
+</section>
+
+<section id="experience" class="card">
+  <h2>Experience</h2>
+  <p><strong>MC – Hypertension Education (2025)</strong><br>
+    Hosted a health talk at Puskesmas Tugu with empathy and energy.</p>
+  <img src="https://i.imgur.com/Vw2xZuL.jpeg" alt="MC Firda" style="width:100%; border-radius:12px; margin-top:15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <p style="text-align:center; font-size:0.9rem; color:#777;">Hypertension Health Education – MC Role, Puskesmas Tugu 2025</p>
+
+  <span class="exp-toggle" onclick="toggleMore()">+ Show more</span>
+  <div id="moreExp" style="display:none;">
+    <p><strong>Moderator – Pemira FIK UI 2024</strong><br>Facilitated panel discussions with clarity and focus.</p>
+    <p><strong>Publication Staff – Olim UI 2024</strong><br>Designed visual content for promotional campaigns.</p>
+  </div>
+</section>
+
+<section id="education" class="card">
+  <h2>Education</h2>
+  <p><strong>Universitas Indonesia</strong> (2024–Present)<br>Studying nursing and involved in interprofessional projects.</p>
+  <p><strong>SMAN 6 Jakarta</strong> (2021–2024)<br>Science stream with active participation in school events.</p>
+</section>
+
+<footer><p>© 2025 Firda Hawany</p></footer>
+
+<script>
+  const darkBtn = document.getElementById("darkToggle");
+  darkBtn.onclick = () => {
+    document.body.classList.toggle("dark");
+    darkBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  };
+
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(card => observer.observe(card));
+
+  const text = "Nursing Student • Public Communicator • Event Host";
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      document.getElementById("typingText").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, 40);
+    }
+  }
+  type();
+
+  document.querySelectorAll('.tab-buttons button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-buttons button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  function toggleMore() {
+    const more = document.getElementById("moreExp");
+    const toggle = document.querySelector(".exp-toggle");
+    if (more.style.display === "none") {
+      more.style.display = "block";
+      toggle.textContent = "- Show less";
+    } else {
+      more.style.display = "none";
+      toggle.textContent = "+ Show more";
+    }
+  }
+</script>
+
+</body>
+</html>
